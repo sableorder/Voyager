@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Voyager | Home</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/main.css">
+<link href='http://fonts.googleapis.com/css?family=Cabin|Roboto' rel='stylesheet' type='text/css'>
 </head>
 <body>
  <h1>Home Page</h1>
