@@ -8,6 +8,8 @@ public class Post {
 	private String message;
 	private String author;
 	
+	public Post() {}
+	
 	public Post(String title, String message, String author) {
 		id = ++counter;
 		this.setTitle(title);
@@ -37,5 +39,23 @@ public class Post {
 	
 	public String getAuthor() {
 		return author;
+	}
+
+	public Long getCounter() {
+		return counter;
+	}
+
+	public void setCounter(Long counter) {
+		this.counter = counter;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}	
+	
+	
 }
