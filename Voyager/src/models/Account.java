@@ -1,4 +1,4 @@
-package Models;
+package models;
 
 import java.util.List;
 
@@ -24,10 +24,12 @@ public class Account{
 	
 	//private Set<AccountRole> roles = new HashSet<>();
 	
-	public Account(String UserName, String Email, String Avatar,Roles role){
-		this.username = UserName;
+	public Account(String UserName, String Email, String Avatar,Roles role, String password){
+		this.setUsername(UserName);
 		this.Email = Email;
 		this.Avatar = Avatar;
+		this.role = role;
+		this.password = password;
 
 	}
 	public String getEmail() {
@@ -47,9 +49,7 @@ public class Account{
 	public int getUserID() {
 		return UserID;
 	}
-	public String getUsername() {
-		return username;
-	}
+	
 	
 	public void setPassword(String pass){
 	
@@ -78,6 +78,12 @@ public class Account{
 	}
 	public void setComments(List<String> comments) {
 		Comments = comments;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }
