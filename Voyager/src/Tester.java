@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import models.Account;
 import models.DatabaseAccess;
+import models.Roles;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
@@ -14,9 +16,9 @@ public class Tester {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DatabaseAccess access = new DatabaseAccess();
-		access.login("David", "joke");
-		access.login("David", "pass");
 		access.login("David", "Pass");
+		Account testing = new Account("Billy", "Bob@gmail.com", "", Roles.Admin, "SuperSecret");
+		access.registerUser(testing);
 		
 //		System.out.println("hello world");
 //		Driver driver = new SQLServerDriver();
