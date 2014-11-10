@@ -10,5 +10,9 @@
 </head>
 <body>
  <h1>Home Page</h1>
+  <form action="login.jsp">
+ <input type="submit" id="submit" value="login"/>
+ </form>
+ 
 </body>
 </html>

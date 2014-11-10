@@ -31,7 +31,24 @@ public class DatabaseAccess {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
-		
+	}
+	
+	public void registerUser(User user){
+		Driver driver = new SQLServerDriver();
+		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+		try {
+			user.getUsername().replace("'", "''");
+			user.getPassword().replace("'", "''");
+			Connection con = driver.connect(connectionUrl, new Properties());
+			PreparedStatement statement = con.prepareStatement("Insert INTO UserTable (userName, userPassword) "
+					+ "VALUES ('" + user.getUsername() + "', '" + user.getPassword() + "');");
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public void removeUser(User user){
 		
 	}
 }
