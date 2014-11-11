@@ -8,7 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/David Borland/Documents/CSC280/apache-tomee-plus-1.6.0/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/David Borland/Documents/PRO280/Microsoft JDBC Driver 4.0 for SQL Server/sqljdbc_4.0/enu/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/njurado/Documents/bin/bootstrap.jar"/>
+	<classpathentry kind="lib" path="C:/Users/njurado/Documents/travel/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
