@@ -11,8 +11,12 @@ import java.util.Properties;
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 
-public class DatabaseAccess {
+public class DatabaseAccess implements DataService {
 
+	/* (non-Javadoc)
+	 * @see models.DataService#login(java.lang.String, java.lang.String)
+	 */
+	@Override
 	public Account login(String username, String password){
 		Account account = null;
 		Driver driver = new SQLServerDriver();
@@ -40,6 +44,10 @@ public class DatabaseAccess {
 	//Bind variables
 	
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#registerUser(models.Account)
+	 */
+	@Override
 	public void registerUser(Account user){
 		Driver driver = new SQLServerDriver();
 		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -59,6 +67,10 @@ public class DatabaseAccess {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#removeUser(models.Account)
+	 */
+	@Override
 	public void removeUser(Account user){
 		Driver driver = new SQLServerDriver();
 		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -72,6 +84,10 @@ public class DatabaseAccess {
 		}	
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#updateUser(models.Account)
+	 */
+	@Override
 	public void updateUser(Account user){
 		Driver driver = new SQLServerDriver();
 		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -87,6 +103,10 @@ public class DatabaseAccess {
 		}	
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#getUserId(java.lang.String)
+	 */
+	@Override
 	public int getUserId(String user){
 		Account account = null;
 		int id = -1;
@@ -105,6 +125,10 @@ public class DatabaseAccess {
 		return id;
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#getUserName(int)
+	 */
+	@Override
 	public String getUserName(int userId){
 		String userName = null;
 		Driver driver = new SQLServerDriver();
@@ -123,6 +147,10 @@ public class DatabaseAccess {
 		return userName;
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#enterPost(models.Post)
+	 */
+	@Override
 	public void enterPost(Post post){
 		Driver driver = new SQLServerDriver();
 		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
@@ -137,6 +165,10 @@ public class DatabaseAccess {
 		}	
 	}
 	
+	/* (non-Javadoc)
+	 * @see models.DataService#retrievePost(java.lang.String)
+	 */
+	@Override
 	public Post retrievePost(String postTitle){
 		Post post = null;
 		Driver driver = new SQLServerDriver();

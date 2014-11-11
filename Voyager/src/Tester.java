@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import models.Account;
+import models.DataService;
 import models.DatabaseAccess;
 import models.Post;
 import models.Roles;
@@ -14,7 +15,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class Tester {
 
-	private static DatabaseAccess access = new DatabaseAccess();
+	private static DataService access = new DatabaseAccess();
 
 	
 	public static void main(String[] args) {
