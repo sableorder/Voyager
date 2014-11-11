@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import models.Account;
 import models.DatabaseAccess;
+import models.Post;
 import models.Roles;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
@@ -13,23 +14,53 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class Tester {
 
+	private static DatabaseAccess access = new DatabaseAccess();
+
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DatabaseAccess access = new DatabaseAccess();
-		access.login("David", "Pass");
+		access = new DatabaseAccess();
+		//registerTest();
+		//loginTest();
+		//updateTest();
+		//removeUser();
+		//registerTest();
+		//postTest();
+		//postRead();
+	}
+	
+	public static void registerTest(){
 		Account testing = new Account("Billy", "Bob@gmail.com", "", Roles.Admin, "SuperSecret");
 		access.registerUser(testing);
-		
-//		System.out.println("hello world");
-//		Driver driver = new SQLServerDriver();
-//		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-//		try {
-//			Connection con = driver.connect(connectionUrl, new Properties());
-//			PreparedStatement statement = con.prepareStatement("Insert INTO UserTable (userId, userName, userPassword) VALUES (12346, 'BobII', 'SuperSecret');");
-//			statement.execute();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
+	}
+	
+	public static void loginTest(){
+		Account failLogin = access.login("Billy", "Password");
+		System.out.println(failLogin);
+		Account loggedIn = access.login("Billy", "SuperSecret");
+		System.out.println(loggedIn.getUsername());
+	}
+	
+	public static void updateTest(){
+		Account toUpdate = new Account("Billy", "Billy@gmail.com", "", Roles.User, "SuperSecret");
+		access.updateUser(toUpdate);
+	}
+	
+	public static void removeUser(){
+		Account user = new Account("Billy", "Billy@gmail.com", "", Roles.User, "SuperSecret");
+		access.removeUser(user);
+	}
+	
+	public static void postTest(){
+		Post testPost = new Post("Test1", "Lots of information to have", "Billy");
+		access.enterPost(testPost);
+	}
+	
+	public static void postRead(){
+		Post testRead = access.retrievePost("Test1");
+		System.out.println(testRead.getTitle());
+		System.out.println(testRead.getAuthor());
+		System.out.println(testRead.getMessage());
 	}
 
 }

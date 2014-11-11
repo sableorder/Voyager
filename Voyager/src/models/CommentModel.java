@@ -6,11 +6,11 @@ import java.util.Date;
 public class CommentModel 
 {
 	private int ID;
-	private Account user;
+	private String user;
 	private String comment = "";
 	private Date time;
 	
-	public CommentModel(int ID, Account user, String comment)
+	public CommentModel(int ID, String user, String comment)
 	{
 		this.ID = ID;
 		this.user = user;
@@ -26,7 +26,7 @@ public class CommentModel
 	public int getID() {
 		return ID;
 	}
-	public Account getUser() {
+	public String getUser() {
 		return user;
 	}
 
