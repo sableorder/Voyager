@@ -26,7 +26,7 @@ public class Tester {
 		//removeUser();
 		//registerTest();
 		//postTest();
-		//postRead();
+		postRead();
 	}
 	
 	public static void registerTest(){

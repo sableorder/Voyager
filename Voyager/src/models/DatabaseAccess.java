@@ -37,6 +37,9 @@ public class DatabaseAccess {
 		return account;
 	}
 	
+	//Bind variables
+	
+	
 	public void registerUser(Account user){
 		Driver driver = new SQLServerDriver();
 		String connectionUrl = "jdbc:sqlserver://n8bu1j6855.database.windows.net:1433;database=VoyagerDB;user=VoyageLogin@n8bu1j6855;password={GroupP@ssword};encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
