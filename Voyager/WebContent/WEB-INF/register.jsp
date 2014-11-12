@@ -22,10 +22,12 @@
 	<article class="bodyContainer">
 		<h1>Register New User</h1>
 		<form method="post">
-			<label>Username:</label> <input name="username" /> <label>Password:</label><input
-				name="password" type="password" /> <label>Confirm Password:</label><input
-				name="confirmPassword" type="password" /> <input type="submit"
-				value="Register" id="submit" />
+			<label>Username:</label> <input name="username" />
+			<label>Password:</label><input	name="password" type="password" /> 
+			<label>Confirm Password:</label><input name="confirmPassword" type="password" />
+			<label>Email Address:</label><input name="email" type="email" />
+			<label>Confirm Email:</label><input name="confirmEmail" type="email" />
+			<input type="submit" value="Register" id="submit" />
 		</form>
 
 	</article>

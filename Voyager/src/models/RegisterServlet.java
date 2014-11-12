@@ -30,11 +30,11 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RegisterController rc = new RegisterController(); /*db*/
-		
-		ModelAndView mav = rc.commitUserRegisterUsernWorkflow(request);
-		request.setAttribute("model", mav.getModel());
-		RequestDispatcher rd = request.getRequestDispatcher(mav.getViewName());
+//		RegisterController rc = new RegisterController(); /*db*/
+//		
+//		ModelAndView mav = rc.commitUserRegisterUsernWorkflow(request);
+//		request.setAttribute("model", mav.getModel());
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/register.jsp");
 		rd.forward(request, response);
 	}
 }
