@@ -1,9 +1,11 @@
 package Controllers;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import exceptions.UsernameAlreadyExistsException;
-import model.DataLocator;
 import models.Account;
 import models.DataService;
 import models.ModelAndView;
@@ -30,25 +32,38 @@ public class RegisterController {
 		String confirmPassword = request.getParameter("confirmPassword");
 		String email = request.getParameter("email");
 		String confirmEmail = request.getParameter("confirmEmail");
-		String avatarPath = FileUploadController.processRequest(request, response, filePath);
+		String avatarPath = null;
+		try {
+			avatarPath = FileUploadController.processRequest(request, response, filePath);
+		} catch (ServletException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		
 		RegisterUserModel model = new RegisterUserModel();
+		ModelAndView mv = null;
 		
 		if(!password.equals(confirmPassword)) {
-			model.setErrorMessage("Bad username/password.");
-			return new ModelAndView(model, "/WEB-INF/register.jsp");
+			model.setErrorMessage("Bad username/password. ");
+			mv = new ModelAndView(model, "/WEB-INF/register.jsp");
 		}
-
+		if(!email.equals(confirmEmail)){
+			model.setErrorMessage(model.getErrorMessage() + "Emails did not match. ");
+			mv = new ModelAndView(model, "/WEB-INF/register.jsp");
+		}
 		try {
 			Account user = new Account(username, email, avatarPath, Roles.User, password);
 			dataService.registerUser(user);
 			model.setUser(user);
-			return new ModelAndView(model, "/WEB-INF/account/profile.jsp");
+			mv = new ModelAndView(model, "/WEB-INF/account/profile.jsp");
 		} catch(UsernameAlreadyExistsException e) {
-			model.setErrorMessage("Incorrect Login");
+			model.setErrorMessage("Username has already been used.");
 			
-			return new ModelAndView(model, "/WEB-INF/account/login.jsp");
+			mv = new ModelAndView(model, "/WEB-INF/account/register.jsp");
 		}
+		
+		return mv;
 	}
 }

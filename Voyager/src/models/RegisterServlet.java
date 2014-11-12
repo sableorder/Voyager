@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Controllers.RegisterController;
+
 
 /**
  * Servlet implementation class RegisterServlet
@@ -22,8 +24,12 @@ import javax.servlet.http.HttpServletResponse;
 maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private DataService dataService;
 	
+	@Override
 	public void init(ServletConfig config) throws ServletException{
+		super.init(config);
+		dataService = (DataService) this.getServletContext().getAttribute("data");
 
 	}
 	/**
@@ -38,7 +44,11 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/register.jsp");
+		String path = this.getServletContext().getRealPath(File.separator);
+		RegisterController regControl = new RegisterController(request, response, new DatabaseAccess(), this.getServletContext().getRealPath(File.separator));
+		
+		ModelAndView mv = regControl.commitUserRegisterUser();
+		RequestDispatcher rd = request.getRequestDispatcher(mv.getViewName());
 		rd.forward(request, response);
 	}
 }
