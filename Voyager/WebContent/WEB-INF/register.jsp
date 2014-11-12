@@ -21,12 +21,13 @@
 	</header>
 	<article class="bodyContainer">
 		<h1>Register New User</h1>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<label>Username:</label> <input name="username" />
 			<label>Password:</label><input	name="password" type="password" /> 
 			<label>Confirm Password:</label><input name="confirmPassword" type="password" />
 			<label>Email Address:</label><input name="email" type="email" />
 			<label>Confirm Email:</label><input name="confirmEmail" type="email" />
+			<label>Profile Image:</label><input name="image" type="file" />
 			<input type="submit" value="Register" id="submit" />
 		</form>
 

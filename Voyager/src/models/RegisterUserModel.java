@@ -1,7 +1,7 @@
 package models;
 
 public class RegisterUserModel {
-	private User user;
+	private Account user;
 	private String errorMessage;
 	public String getErrorMessage()
 	{
@@ -11,11 +11,11 @@ public class RegisterUserModel {
 	{
 		this.errorMessage = errorMessage;
 	}
-	public User getUser()
+	public Account getUser()
 	{
 		return user;
 	}
-	public void setUser(User user)
+	public void setUser(Account user)
 	{
 		this.user = user;
 	}
